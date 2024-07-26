@@ -1,0 +1,20 @@
+.SearchMobile {
+  &_input {
+    width: 100%;
+    max-width: 628px;
+    min-height: 48px;
+
+    font-size: 16px;
+
+    border: 1px solid rgba(42, 82, 117, 1);
+
+    margin-top: 55px;
+    padding: 0 0 0 20px;
+  }
+}
+
+@media (max-width: 320px) {
+  .SearchMobile {
+    padding: 0 20px;
+  }
+}
