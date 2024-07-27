@@ -16,22 +16,22 @@ const BestSellers: React.FC<BestSellersProps> = ({ title }) => {
         <Link to="">Все товары</Link>
       </div>
       <div className="Product_wrapper">
-        <NavLink to={"/product" + index} key={index}>
-          <ProductCard
-            image={
-              <img
-                src={getImageByKey("GyroscutersProduct")}
-                alt="Gyroscuters Product"
-              />
-            }
-            typeProduct="Сигвеи"
-            name="Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)"
-            comments={17}
-            rating={5}
-            discount={20}
-            priceBefore={5400}
-          />
-        </NavLink>
+        {/* <NavLink to={"/product" + index} key={index}> */}
+        <ProductCard
+          image={
+            <img
+              src={getImageByKey("GyroscutersProduct")}
+              alt="Gyroscuters Product"
+            />
+          }
+          typeProduct="Сигвеи"
+          name="Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)"
+          comments={17}
+          rating={5}
+          discount={20}
+          priceBefore={5400}
+        />
+        {/* </NavLink> */}
 
         <ProductCard
           image={
