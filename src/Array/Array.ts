@@ -1,3 +1,5 @@
+import { getImageByKey } from "../getImageByKey"
+
 export const ArrayNews = [
   {
     id: 1,
@@ -381,5 +383,51 @@ export const ArrayNews = [
       secondTextInside:
         "Высокий уровень вовлечения представителей целевой аудитории является чётким доказательством простого факта: высококачественный прототип будущего проекта обеспечивает актуальность переосмысления внешнеэкономических политик. Противоположная точка зрения подразумевает, что сделанные на базе интернет-аналитики выводы могут быть разоблачены. В частности, высокотехнологичная концепция общественного уклада, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для позиций, занимаемых участниками в отношении поставленных задач.",
     },
+  },
+]
+
+export const ArrayProduct = [
+  {
+    id: 0,
+    img: "GyroscutersProduct",
+    typeProduct: "Сигвеи",
+    name: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
+    comments: 17,
+    rating: 5,
+    discount: 20,
+    priceBefore: 5400,
+  },
+
+  {
+    id: 1,
+    img: "GyroscutersProduct",
+    typeProduct: "Сигвеи",
+    name: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
+    comments: 17,
+    rating: 4,
+    discount: 20,
+    priceBefore: 5400,
+  },
+
+  {
+    id: 2,
+    img: "GyroscutersProduct",
+    typeProduct: "Сигвеи",
+    name: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
+    comments: 17,
+    rating: 5,
+    discount: 0,
+    priceBefore: 13690,
+  },
+
+  {
+    id: 3,
+    img: "GyroscutersProduct",
+    typeProduct: "Сигвеи",
+    name: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
+    comments: 17,
+    rating: 5,
+    discount: 20,
+    priceBefore: 5400,
   },
 ]
