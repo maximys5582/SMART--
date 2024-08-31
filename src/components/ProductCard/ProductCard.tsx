@@ -1,15 +1,18 @@
 import React from "react"
 import { getImageByKey } from "../../getImageByKey"
+import { useBasket } from "../../BasketContext"
 
 interface ProductCardProps {
   image: React.ReactNode
   typeProduct: string
   name: string
   rating: number
-  comments: number
+  comments: any
   priceBefore: number
   discount: number
+  product: Product // Добавляем продукт
 }
+
 const ProductCard: React.FC<ProductCardProps> = ({
   image,
   typeProduct,
@@ -18,7 +21,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
   comments,
   priceBefore,
   discount,
+  product,
 }) => {
+  const { addToBasket } = useBasket()
+
   const renderStars = (rating: number) => {
     const stars = []
     for (let i = 1; i <= 5; i++) {
@@ -33,6 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   const priceAfter: number = priceBefore * (1 - discount / 100)
   const discountAmount: number = priceBefore - priceAfter
+
   return (
     <div className="Product-card">
       <div className="Product-card__top-wrap">{image}</div>
@@ -48,9 +55,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <div className="price">
           <p className="price-before">{priceBefore} ₽</p>
           <p className="price-after">{priceAfter} ₽</p>
-          <p className="price-discont">
-            <div className="discount">{discount}%</div> - {discountAmount} ₽
-          </p>
+          <div className="price-discont">
+            <p className="discount">{discount}%</p> - {discountAmount} ₽
+          </div>
         </div>
 
         <div className="price-save">
@@ -61,7 +68,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
       <div className="price-bottom_wrap">
         <button className="purchaseButton">Купить в 1 клик</button>
-        <button className="Product_basket">
+        <button className="Product_basket" onClick={() => addToBasket(product)}>
           {getImageByKey("white_basket")}
         </button>
       </div>

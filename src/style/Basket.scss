@@ -1,0 +1,61 @@
+.Basket {
+  margin: 8px 0 0 6px;
+
+  font-size: 16px;
+
+  &_line {
+    margin-top: 29px;
+  }
+
+  &_right {
+    width: 480px;
+    height: 354px;
+
+    background: rgba(237, 242, 246, 1);
+
+    border-radius: 8px;
+
+    margin: 0 0px 0 20px;
+    padding: 31px;
+
+    &_content {
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      margin-top: 22px;
+    }
+
+    &_toBePaid {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 39px;
+    }
+  }
+
+  &_container {
+    display: flex;
+    margin-top: 53px;
+  }
+
+  &_button {
+    width: 100%;
+
+    background: rgba(131, 134, 136, 1);
+    color: #fff;
+    font-size: 16px;
+
+    border-radius: 4px;
+
+    margin-top: 23px;
+    padding: 14px 0;
+  }
+}
+
+.Basket_left_yourOrder {
+  width: 860px;
+
+  border: 1px solid rgba(200, 202, 203, 1);
+  border-radius: 8px;
+
+  padding: 30px;
+}

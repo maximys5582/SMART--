@@ -1,0 +1,32 @@
+.ProductSlider {
+  max-width: 505px;
+  height: auto;
+  margin-top: 0;
+
+  &_pagination {
+    height: auto;
+  }
+}
+
+.ProductSlider img {
+  object-fit: contain;
+}
+
+.ProductSlider_pagination .swiper-wrapper {
+  justify-content: center;
+  margin-top: 56px;
+
+  & img {
+    width: 58.75px;
+  }
+}
+
+@media (max-width: 425px) {
+  .ProductSlider {
+    width: 100%;
+  }
+
+  .ProductPage_price-bottom_wrap {
+    flex-wrap: wrap;
+  }
+}

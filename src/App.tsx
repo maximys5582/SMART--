@@ -1,16 +1,19 @@
+import React, { useState } from "react"
 import { Route, Routes } from "react-router-dom"
 import Main from "./pages/Main"
 import "./style/nullStyle.scss"
 import Menu from "./components/Menu"
 import Footer from "./components/Footer"
 import MenuPhone from "./components/MenuPhone"
-import { useState } from "react"
 import CatalogPhone from "./components/CatalogPhone/CatalogPhone"
 import AllNews from "./pages/AllNews"
 import News from "./pages/News"
 import ProductPage from "./pages/ProductPage"
+import Viewed from "./pages/Viewed"
+import Basket from "./pages/Basket"
+import { BasketProvider } from "./BasketContext"
 
-const App = () => {
+const App: React.FC = () => {
   const [isCatalogPhoneVisible, setIsCatalogPhoneVisible] =
     useState<boolean>(false)
   const [activeSection, setActiveSection] = useState<string>("")
@@ -36,13 +39,15 @@ const App = () => {
   }
 
   return (
-    <>
+    <BasketProvider>
       <Menu />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/news" element={<AllNews />} />
         <Route path={"/news/:id"} element={<News />} />
         <Route path={"/product/:id"} element={<ProductPage />} />
+        <Route path={"/viewed"} element={<Viewed />} />
+        <Route path={"/basket"} element={<Basket />} />
       </Routes>
       <Footer />
       <MenuPhone
@@ -53,7 +58,7 @@ const App = () => {
       {isCatalogPhoneVisible && (
         <CatalogPhone close={close} activeSection={activeSection} />
       )}
-    </>
+    </BasketProvider>
   )
 }
 

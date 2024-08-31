@@ -4,6 +4,7 @@ import "../style/AllNews.scss"
 import CardNews from "../components/CardNews/CardNews"
 import { ArrayNews } from "../Array/Array"
 import Pagination from "../components/Pagination/Pagination"
+import ScrollOnTop from "../components/scrolloOnTop"
 
 const AllNews = () => {
   const itemsPerPage = 8
@@ -17,6 +18,7 @@ const AllNews = () => {
 
   return (
     <div className="container">
+      <ScrollOnTop />
       <div className="bredcrumbs">
         <Link to="/" className="bredcrumbs_link">
           Главная

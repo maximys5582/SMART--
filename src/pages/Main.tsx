@@ -3,10 +3,12 @@ import Slider from "../components/Slider/slider"
 import Promos from "../components/Promos/Promos"
 import { getImageByKey } from "../getImageByKey"
 import PromosNews from "../components/Promos/PromosNews"
+import ScrollOnTop from "../components/scrolloOnTop"
 
 const Main = () => {
   return (
     <div className="container">
+      <ScrollOnTop />
       <Slider />
       <BestSellers title="Хиты продаж" />
       <BestSellers title="Новинки" />

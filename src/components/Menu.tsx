@@ -14,7 +14,9 @@ const Menu = () => {
     <header className="header">
       <div className="container">
         <div className="header-top">
-          <div className="logo">{getImageByKey("logo")}</div>
+          <div className="logo">
+            <Link to={"/"}>{getImageByKey("logo")}</Link>
+          </div>
           <div className="tel">
             <p>+7 (812) 660-50-54</p>
             <p>+7 (958) 111-95-03</p>
@@ -26,7 +28,7 @@ const Menu = () => {
               <div className="search-icon">{getImageByKey("loop")}</div>
               <input type="text" className="search-input" placeholder="Поиск" />
             </div>
-            <Link to={""} className="menu-icon">
+            <Link to={"/viewed"} className="menu-icon">
               {getImageByKey("eye")}
             </Link>
             <Link to={""} className="menu-icon">
@@ -35,7 +37,7 @@ const Menu = () => {
             <Link to={""} className="menu-icon">
               {getImageByKey("compare")}
             </Link>
-            <Link to={""} className="menu-icon">
+            <Link to={"/basket"} className="menu-icon">
               {getImageByKey("empty")}
             </Link>
             <button type="submit" className="log-in">

@@ -1,5 +1,3 @@
-import { getImageByKey } from "../getImageByKey"
-
 export const ArrayNews = [
   {
     id: 1,
@@ -392,10 +390,33 @@ export const ArrayProduct = [
     img: "GyroscutersProduct",
     typeProduct: "Сигвеи",
     name: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
-    comments: 17,
+    comments: [
+      {
+        id: 0,
+        CustomerName: "Александр",
+        date: "07 июня 2021",
+        reviews: "Отличный самокат!",
+        description: "Катаюсь каждый день после работы, заряд держит отлично!",
+      },
+      {
+        id: 1,
+        CustomerName: "Александр",
+        date: "07 июня 2021",
+        reviews: "Отличный самокат!",
+        description: "Катаюсь каждый день после работы, заряд держит отлично!",
+      },
+    ],
     rating: 5,
     discount: 20,
     priceBefore: 5400,
+    specifications: {
+      type: "-",
+      max_speed: 50,
+      engine_power: 2300,
+      mileage_on_a_single_charge: 326,
+      type_of_brake: "Дисковый механический",
+      cruise_control: "Есть",
+    },
   },
 
   {
@@ -403,10 +424,32 @@ export const ArrayProduct = [
     img: "GyroscutersProduct",
     typeProduct: "Сигвеи",
     name: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
-    comments: 17,
+    comments: [
+      {
+        id: 0,
+        CustomerName: "Александр",
+        date: "07 июня 2021",
+        reviews: "Катаюсь каждый день после работы, заряд держит отлично!",
+      },
+      {
+        id: 1,
+        CustomerName: "Александр",
+        date: "07 июня 2021",
+        reviews: "Отличный самокат!",
+        description: "Катаюсь каждый день после работы, заряд держит отлично!",
+      },
+    ],
     rating: 4,
     discount: 20,
     priceBefore: 5400,
+    specifications: {
+      type: "-",
+      max_speed: 252,
+      engine_power: 3003,
+      mileage_on_a_single_charge: 363,
+      type_of_brake: "Дисковый механический",
+      cruise_control: "Есть",
+    },
   },
 
   {
@@ -414,10 +457,32 @@ export const ArrayProduct = [
     img: "GyroscutersProduct",
     typeProduct: "Сигвеи",
     name: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
-    comments: 17,
+    comments: [
+      {
+        id: 0,
+        CustomerName: "Александр",
+        date: "07 июня 2021",
+        reviews: "Катаюсь каждый день после работы, заряд держит отлично!",
+      },
+      {
+        id: 1,
+        CustomerName: "Александр",
+        date: "07 июня 2021",
+        reviews: "Отличный самокат!",
+        description: "Катаюсь каждый день после работы, заряд держит отлично!",
+      },
+    ],
     rating: 5,
-    discount: 0,
+    discount: 20,
     priceBefore: 13690,
+    specifications: {
+      type: "-",
+      max_speed: 245,
+      engine_power: 3004,
+      mileage_on_a_single_charge: 346,
+      type_of_brake: "Дисковый механический",
+      cruise_control: "Есть",
+    },
   },
 
   {
@@ -425,9 +490,100 @@ export const ArrayProduct = [
     img: "GyroscutersProduct",
     typeProduct: "Сигвеи",
     name: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
-    comments: 17,
+    comments: [
+      {
+        id: 0,
+        CustomerName: "Александр",
+        date: "07 июня 2021",
+        reviews: "Катаюсь каждый день после работы, заряд держит отлично!",
+      },
+      {
+        id: 1,
+        CustomerName: "Александр",
+        date: "07 июня 2021",
+        reviews: "Отличный самокат!",
+        description: "Катаюсь каждый день после работы, заряд держит отлично!",
+      },
+    ],
     rating: 5,
     discount: 20,
     priceBefore: 5400,
+    specifications: {
+      type: "-",
+      max_speed: 256,
+      engine_power: 3007,
+      mileage_on_a_single_charge: 367,
+      type_of_brake: "Дисковый механический",
+      cruise_control: "Есть",
+    },
+  },
+]
+
+export const ArrayProductBasket = [
+  {
+    id: 0,
+    img: "GyroscutersProduct",
+    typeProduct: "Сигвеи",
+    name: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
+    comments: [
+      {
+        id: 0,
+        CustomerName: "Александр",
+        date: "07 июня 2021",
+        reviews: "Отличный самокат!",
+        description: "Катаюсь каждый день после работы, заряд держит отлично!",
+      },
+      {
+        id: 0,
+        CustomerName: "Александр",
+        date: "07 июня 2021",
+        reviews: "Отличный самокат!",
+        description: "Катаюсь каждый день после работы, заряд держит отлично!",
+      },
+    ],
+    rating: 5,
+    discount: 20,
+    priceBefore: 5400,
+    specifications: {
+      type: "-",
+      max_speed: 50,
+      engine_power: 2300,
+      mileage_on_a_single_charge: 326,
+      type_of_brake: "Дисковый механический",
+      cruise_control: "Есть",
+    },
+  },
+
+  {
+    id: 1,
+    img: "GyroscutersProduct",
+    typeProduct: "Сигвеи",
+    name: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
+    comments: [
+      {
+        id: 0,
+        CustomerName: "Александр",
+        date: "07 июня 2021",
+        reviews: "Катаюсь каждый день после работы, заряд держит отлично!",
+      },
+      {
+        id: 0,
+        CustomerName: "Александр",
+        date: "07 июня 2021",
+        reviews: "Отличный самокат!",
+        description: "Катаюсь каждый день после работы, заряд держит отлично!",
+      },
+    ],
+    rating: 4,
+    discount: 20,
+    priceBefore: 5400,
+    specifications: {
+      type: "-",
+      max_speed: 252,
+      engine_power: 3003,
+      mileage_on_a_single_charge: 363,
+      type_of_brake: "Дисковый механический",
+      cruise_control: "Есть",
+    },
   },
 ]

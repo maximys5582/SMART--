@@ -2,6 +2,7 @@ import "../style/News.scss"
 import { Link, useParams } from "react-router-dom"
 import { ArrayNews } from "../Array/Array"
 import { getImageByKey } from "../getImageByKey"
+import ScrollOnTop from "../components/scrolloOnTop"
 
 const News = () => {
   const { id } = useParams<{ id: string }>()
@@ -9,6 +10,7 @@ const News = () => {
 
   return (
     <div className="container">
+      <ScrollOnTop />
       <div className="bredcrumbs">
         <Link to="/" className="bredcrumbs_link">
           Главная
@@ -44,13 +46,7 @@ const News = () => {
             </p>
           </div>
           <div className="News_img">
-            {
-              <img
-                src={getImageByKey(newsItem?.img)}
-                alt="News"
-                // className="News_img"
-              />
-            }
+            {<img src={getImageByKey(newsItem?.img)} alt="News" />}
           </div>
         </div>
       </div>

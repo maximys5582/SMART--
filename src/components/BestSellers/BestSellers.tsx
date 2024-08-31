@@ -25,7 +25,7 @@ const BestSellers: React.FC<BestSellersProps> = ({ title }) => {
               }
               typeProduct={item.typeProduct}
               name={item.name}
-              comments={item.comments}
+              comments={item.comments.length}
               rating={item.rating}
               discount={item.discount}
               priceBefore={item.priceBefore}
