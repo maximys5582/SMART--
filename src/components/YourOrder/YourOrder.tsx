@@ -4,24 +4,26 @@ import { NavLink } from "react-router-dom"
 import { getImageByKey } from "../../getImageByKey"
 
 interface YourOrderProps {
-  image: React.ReactNode
+  img: string
   name: string
   priceBefore: number
   discount: number
   increment: () => void
   decrement: () => void
+  handleRemove: () => void
   count: number
   index: number
-  updateTotalCost?: (index: number, newTotalCost: number) => void // Make this optional
+  updateTotalCost?: (index: number, newTotalCost: number) => void
 }
 
 const YourOrder: React.FC<YourOrderProps> = ({
-  image,
+  img,
   name,
   priceBefore,
   discount,
   increment,
   decrement,
+  handleRemove,
   count,
   index,
 }) => {
@@ -31,7 +33,9 @@ const YourOrder: React.FC<YourOrderProps> = ({
     <div className="YourOrder">
       <NavLink to={`/product/${index}`} key={index}>
         <div className="YourOrder_nav">
-          <div className="YourOrder_img">{image}</div>
+          <div className="YourOrder_img">
+            <img src={getImageByKey(img)} alt={"Image"} />
+          </div>
           <span className="YourOrder_title">{name}</span>
         </div>
       </NavLink>
@@ -55,7 +59,9 @@ const YourOrder: React.FC<YourOrderProps> = ({
         <p className="price-after">{priceAfter.toFixed(2)} ₽</p>
       </div>
 
-      <div className="YourOrder_delete">{getImageByKey("delete")}</div>
+      <div className="YourOrder_delete" onClick={handleRemove}>
+        {getImageByKey("delete")}
+      </div>
     </div>
   )
 }

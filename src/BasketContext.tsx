@@ -1,38 +1,24 @@
-import React, { createContext, useContext, useState, ReactNode } from "react"
+import React, { createContext, useContext, useState, useEffect } from "react"
 
+// Определение типа для продукта
 interface Product {
   id: number
   img: string
-  typeProduct: string
   name: string
-  comments: Array<{
-    id: number
-    CustomerName: string
-    date: string
-    reviews: string
-    description?: string
-  }>
-  rating: number
-  discount: number
   priceBefore: number
-  specifications: {
-    type: string
-    max_speed: number
-    engine_power: number
-    mileage_on_a_single_charge: number
-    type_of_brake: string
-    cruise_control: string
-  }
-  quantity?: number // Добавляем опциональное количество
+  discount: number
+  quantity: number
 }
 
+// Определение типа для контекста
 interface BasketContextType {
   basket: Product[]
   addToBasket: (product: Product) => void
-  removeFromBasket: (productId: number) => void
-  updateProductQuantity: (productId: number, quantity: number) => void
+  updateProductQuantity: (id: number, quantity: number) => void
+  removeFromBasket: (id: number) => void
 }
 
+// Создаем контекст с начальным значением `undefined`
 const BasketContext = createContext<BasketContextType | undefined>(undefined)
 
 export const useBasket = () => {
@@ -43,46 +29,53 @@ export const useBasket = () => {
   return context
 }
 
-export const BasketProvider: React.FC<{ children: ReactNode }> = ({
+// Компонент-провайдер для корзины
+export const BasketProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [basket, setBasket] = useState<Product[]>([])
+  // Инициализация состояния корзины с учетом `localStorage`
+  const [basket, setBasket] = useState<Product[]>(() => {
+    const savedBasket = localStorage.getItem("basket")
+    return savedBasket ? JSON.parse(savedBasket) : []
+  })
+
+  // Сохранение состояния корзины в `localStorage` при его изменении
+  useEffect(() => {
+    localStorage.setItem("basket", JSON.stringify(basket))
+  }, [basket])
 
   const addToBasket = (product: Product) => {
     setBasket((prevBasket) => {
-      const existingProductIndex = prevBasket.findIndex(
-        (item) => item.id === product.id
-      )
-      if (existingProductIndex !== -1) {
-        const updatedBasket = [...prevBasket]
-        updatedBasket[existingProductIndex] = {
-          ...updatedBasket[existingProductIndex],
-          quantity: (updatedBasket[existingProductIndex].quantity || 1) + 1,
-        }
-        return updatedBasket
+      const existingProduct = prevBasket.find((p) => p.id === product.id)
+      if (existingProduct) {
+        // Если продукт уже есть в корзине, обновляем количество
+        return prevBasket.map((p) =>
+          p.id === product.id
+            ? { ...p, quantity: p.quantity + product.quantity }
+            : p
+        )
+      } else {
+        // Если продукта нет в корзине, добавляем его
+        return [...prevBasket, product]
       }
-      return [...prevBasket, { ...product, quantity: 1 }]
     })
   }
 
-  const removeFromBasket = (productId: number) => {
+  const updateProductQuantity = (id: number, quantity: number) => {
     setBasket((prevBasket) =>
-      prevBasket.filter((item) => item.id !== productId)
+      prevBasket.map((product) =>
+        product.id === id ? { ...product, quantity } : product
+      )
     )
   }
 
-  const updateProductQuantity = (productId: number, quantity: number) => {
-    setBasket((prevBasket) => {
-      const updatedBasket = prevBasket.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
-      )
-      return updatedBasket
-    })
+  const removeFromBasket = (id: number) => {
+    setBasket((prevBasket) => prevBasket.filter((product) => product.id !== id))
   }
 
   return (
     <BasketContext.Provider
-      value={{ basket, addToBasket, removeFromBasket, updateProductQuantity }}
+      value={{ basket, addToBasket, updateProductQuantity, removeFromBasket }}
     >
       {children}
     </BasketContext.Provider>

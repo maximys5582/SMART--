@@ -1,30 +1,41 @@
 import React from "react"
 import { getImageByKey } from "../../getImageByKey"
-import { useBasket } from "../../BasketContext"
 
 interface ProductCardProps {
-  image: React.ReactNode
+  id: number
+  img: string // Expecting a string for the image URL
   typeProduct: string
   name: string
+  comments: Array<{
+    id: number
+    CustomerName: string
+    date: string
+    reviews: string
+    description: string
+  }>
   rating: number
-  comments: any
-  priceBefore: number
   discount: number
-  product: Product // Добавляем продукт
+  priceBefore: number
+  specifications: {
+    type: string
+    max_speed: number
+    engine_power: number
+    mileage_on_a_single_charge: number
+    type_of_brake: string
+    cruise_control: string
+  }
+  quantity?: number
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
-  image,
+  img,
   typeProduct,
   name,
   rating,
   comments,
   priceBefore,
   discount,
-  product,
 }) => {
-  const { addToBasket } = useBasket()
-
   const renderStars = (rating: number) => {
     const stars = []
     for (let i = 1; i <= 5; i++) {
@@ -41,14 +52,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const discountAmount: number = priceBefore - priceAfter
 
   return (
-    <div className="Product-card">
-      <div className="Product-card__top-wrap">{image}</div>
+    <>
+      <div className="Product-card__top-wrap">
+        <img src={img} alt={name} />
+      </div>
       <p className="product-card__brand">{typeProduct}</p>
       <p className="product-card__name">{name}</p>
       <div className="rating">
         {renderStars(rating)}
         <div className="message">
-          {getImageByKey("message")} ({comments})
+          {getImageByKey("message")} ({comments.length})
         </div>
       </div>
       <div className="price-middle_wrap">
@@ -65,14 +78,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <button className="saveBtn">{getImageByKey("compare")}</button>
         </div>
       </div>
-
-      <div className="price-bottom_wrap">
-        <button className="purchaseButton">Купить в 1 клик</button>
-        <button className="Product_basket" onClick={() => addToBasket(product)}>
-          {getImageByKey("white_basket")}
-        </button>
-      </div>
-    </div>
+    </>
   )
 }
 

@@ -55,6 +55,7 @@
   padding: 0 40px 0 0;
   word-break: auto-phrase;
   line-height: 1.26;
+  color: #000;
 }
 
 .product-card__brand {
@@ -103,6 +104,8 @@
   flex-direction: column;
   row-gap: 6px;
   margin: 11px 0 0px 0px;
+  color: #000;
+
   &-after {
     font-size: 24px;
     font-weight: 600;

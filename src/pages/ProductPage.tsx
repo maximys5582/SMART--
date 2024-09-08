@@ -9,6 +9,7 @@ import Description from "../components/ProductPage/Description"
 import Specifications from "../components/ProductPage/Specifications"
 import Reviews from "../components/ProductPage/Reviews"
 import ScrollOnTop from "../components/scrolloOnTop"
+import { useBasket } from "../BasketContext"
 
 const ProductPage: FC = () => {
   const { id } = useParams<{ id: string }>()
@@ -55,6 +56,8 @@ const ProductPage: FC = () => {
   const priceAfter: number =
     productItem.priceBefore * (1 - productItem.discount / 100)
   const discountAmount: number = productItem.priceBefore - priceAfter
+
+  const { addToBasket } = useBasket()
 
   return (
     <div className="container ProductPage_container">
@@ -115,7 +118,10 @@ const ProductPage: FC = () => {
 
                 <div>
                   <div className="price-bottom_wrap ProductPage_price-bottom_wrap">
-                    <button className="Product_basket ProductPage-Product_basket">
+                    <button
+                      className="Product_basket ProductPage-Product_basket"
+                      onClick={() => addToBasket(productItem)}
+                    >
                       В корзину
                     </button>
 

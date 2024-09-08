@@ -28,7 +28,27 @@
     &_toBePaid {
       display: flex;
       justify-content: space-between;
+      align-items: end;
+
       margin-top: 39px;
+
+      &_lTitle {
+        font-size: 24px;
+        font-weight: 700;
+      }
+    }
+
+    &_button {
+      width: 100%;
+
+      background: rgba(131, 134, 136, 1);
+      color: #fff;
+      font-size: 16px;
+
+      border-radius: 4px;
+
+      margin-top: 23px;
+      padding: 14px 0;
     }
   }
 
@@ -37,17 +57,42 @@
     margin-top: 53px;
   }
 
-  &_button {
-    width: 100%;
-
-    background: rgba(131, 134, 136, 1);
-    color: #fff;
+  &_nextButton {
     font-size: 16px;
 
-    border-radius: 4px;
+    color: #fff;
+    background: rgba(72, 120, 166, 1);
 
-    margin-top: 23px;
-    padding: 14px 0;
+    margin-top: 11px;
+    padding: 14px 77px;
+
+    border-radius: 4px;
+  }
+
+  &_plug {
+    width: 860px;
+
+    border: 1px solid rgb(200, 202, 203);
+    border-radius: 8px;
+
+    margin-top: 41px;
+    padding: 31px;
+
+    &_title {
+      font-weight: 800;
+      font-size: 28px;
+
+      color: rgba(131, 134, 136, 1);
+
+      &_active {
+        color: black;
+      }
+    }
+
+    &_flex {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }
 
@@ -58,4 +103,29 @@
   border-radius: 8px;
 
   padding: 30px;
+
+  &_emerging {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.disabled {
+  display: none;
+}
+
+.pick-upPoint {
+  display: flex;
+  flex-direction: column;
+}
+
+.adressPoint {
+  display: flex;
+  flex-direction: column;
+
+  margin: 25px 0 0 15px;
+}
+
+.workTime {
+  color: rgba(131, 134, 136, 1);
 }

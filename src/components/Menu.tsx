@@ -1,10 +1,17 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { getImageByKey } from "../getImageByKey"
 import "../style/menu.scss"
 import { Link } from "react-router-dom"
 
 const Menu = () => {
-  const [catalogPhone, setcatalogPhone] = useState<boolean>(true)
+  const [catalogPhone, setcatalogPhone] = useState<boolean>(() => {
+    const savedState = localStorage.getItem("catalogPhone")
+    return savedState ? JSON.parse(savedState) : true
+  })
+
+  useEffect(() => {
+    localStorage.setItem("catalogPhone", JSON.stringify(catalogPhone))
+  }, [catalogPhone])
 
   const handleClickcatalogPhone = () => {
     setcatalogPhone(!catalogPhone)
@@ -80,7 +87,6 @@ const Menu = () => {
                     {getImageByKey("Segways")}Сигвеи и мини-сигвеи
                   </Link>
                   <Link className="catalogPhone_list__link" to={""}>
-                    {" "}
                     {getImageByKey("Electric_scooters")}Электроскутеры
                   </Link>
                   <Link className="catalogPhone_list__link" to={""}>

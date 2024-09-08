@@ -519,71 +519,26 @@ export const ArrayProduct = [
   },
 ]
 
-export const ArrayProductBasket = [
+export const pickUupPoint = [
   {
-    id: 0,
-    img: "GyroscutersProduct",
-    typeProduct: "Сигвеи",
-    name: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
-    comments: [
-      {
-        id: 0,
-        CustomerName: "Александр",
-        date: "07 июня 2021",
-        reviews: "Отличный самокат!",
-        description: "Катаюсь каждый день после работы, заряд держит отлично!",
-      },
-      {
-        id: 0,
-        CustomerName: "Александр",
-        date: "07 июня 2021",
-        reviews: "Отличный самокат!",
-        description: "Катаюсь каждый день после работы, заряд держит отлично!",
-      },
-    ],
-    rating: 5,
-    discount: 20,
-    priceBefore: 5400,
-    specifications: {
-      type: "-",
-      max_speed: 50,
-      engine_power: 2300,
-      mileage_on_a_single_charge: 326,
-      type_of_brake: "Дисковый механический",
-      cruise_control: "Есть",
-    },
+    coords: [59.842418, 30.251225] as [number, number], // Приведение к типу кортежа
+    address: "г. Санкт-Петербург, Бульвар Новаторов, 75",
+    workTime: "ПН-ВС 09:00 — 22:00",
   },
-
   {
-    id: 1,
-    img: "GyroscutersProduct",
-    typeProduct: "Сигвеи",
-    name: "Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)",
-    comments: [
-      {
-        id: 0,
-        CustomerName: "Александр",
-        date: "07 июня 2021",
-        reviews: "Катаюсь каждый день после работы, заряд держит отлично!",
-      },
-      {
-        id: 0,
-        CustomerName: "Александр",
-        date: "07 июня 2021",
-        reviews: "Отличный самокат!",
-        description: "Катаюсь каждый день после работы, заряд держит отлично!",
-      },
-    ],
-    rating: 4,
-    discount: 20,
-    priceBefore: 5400,
-    specifications: {
-      type: "-",
-      max_speed: 252,
-      engine_power: 3003,
-      mileage_on_a_single_charge: 363,
-      type_of_brake: "Дисковый механический",
-      cruise_control: "Есть",
-    },
+    coords: [59.87761, 30.443833] as [number, number], // Приведение к типу кортежа
+    address: "г. Санкт-Петербург, пер. Матюшенко, 28",
+    workTime: "ПН-ВС 09:00 — 22:00",
+  },
+  {
+    coords: [60.036083, 30.415168] as [number, number], // Приведение к типу кортежа
+    address:
+      "г. Санкт-Петербург, пр-кт. Просвещения, 87, литер А, корп. 1 корп",
+    workTime: "ПН-ВС 09:00 — 22:00",
+  },
+  {
+    coords: [59.87761, 30.443833] as [number, number], // Приведение к типу кортежа
+    address: "г. Санкт-Петербург, пер. Матюшенко, 28",
+    workTime: "ПН-ВС 09:00 — 22:00",
   },
 ]
