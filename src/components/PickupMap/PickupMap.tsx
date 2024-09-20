@@ -1,39 +1,59 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 
 interface PickupMapProps {
-  onAddressSelect: (address: string) => void
+  onaddressSelect: (address: string) => void
   points: Array<{ coords: [number, number]; address: string }>
+  center: [number, number]
 }
 
-const PickupMap: React.FC<PickupMapProps> = ({ onAddressSelect, points }) => {
-  const mapInitialized = useRef(false)
+const PickupMap: React.FC<PickupMapProps> = ({
+  onaddressSelect,
+  points,
+  center,
+}) => {
+  const mapRef = useRef<any>(null)
+  const [selectedPoint, setSelectedPoint] = useState<string | null>(null)
 
   useEffect(() => {
-    if (mapInitialized.current || !window.ymaps) return
+    if (!window.ymaps) return
 
-    mapInitialized.current = true
     const ymaps = window.ymaps
 
     ymaps.ready(() => {
-      const map = new ymaps.Map("map", {
-        center: [59.938784, 30.314997], // Центр карты (например, Санкт-Петербург)
-        zoom: 10,
-      })
-
-      // Добавляем метки из переданного массива points
-      points.forEach((point) => {
-        const placemark = new ymaps.Placemark(point.coords, {
-          hintContent: point.address,
+      if (!mapRef.current) {
+        mapRef.current = new ymaps.Map("map", {
+          center: center,
+          zoom: 10,
         })
+      } else {
+        mapRef.current.setCenter(center)
+      }
+
+      mapRef.current.geoObjects.removeAll()
+
+      points.forEach((point) => {
+        const placemark = new ymaps.Placemark(
+          point.coords,
+          {
+            hintContent: point.address,
+          },
+          {
+            preset:
+              point.address === selectedPoint
+                ? "islands#redIcon" // Измените стиль для активной точки
+                : "islands#blueIcon", // Стиль для остальных точек
+          }
+        )
 
         placemark.events.add("click", () => {
-          onAddressSelect(point.address)
+          setSelectedPoint(point.address) // Устанавливаем выбранную точку
+          onaddressSelect(point.address) // Передаем адрес в родительский компонент
         })
 
-        map.geoObjects.add(placemark)
+        mapRef.current.geoObjects.add(placemark)
       })
     })
-  }, [onAddressSelect, points])
+  }, [onaddressSelect, points, center, selectedPoint])
 
   return <div id="map" style={{ width: "317px", height: "329px" }} />
 }

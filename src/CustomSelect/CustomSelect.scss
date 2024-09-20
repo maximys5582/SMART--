@@ -1,0 +1,36 @@
+.custom-select {
+  position: relative;
+  width: 310px;
+  font-family: Arial, sans-serif;
+
+  .selected {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px 0 10px;
+    min-height: 48px;
+    background-color: #fff;
+    border: 1px solid rgba(234, 234, 240, 1);
+    cursor: pointer;
+  }
+
+  .options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid rgba(234, 234, 240, 1);
+    z-index: 1;
+
+    .option {
+      padding: 15px; /* Это задает высоту каждому элементу */
+      cursor: pointer;
+
+      &:hover {
+        background-color: #f1f1f1;
+      }
+    }
+  }
+}
