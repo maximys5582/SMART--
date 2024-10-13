@@ -1,8 +1,9 @@
 .Promos {
   font-family: "Roboto", sans-serif;
-  max-width: 640px;
   min-height: 180px;
-  width: 100%;
+  width: 640px;
+
+  color: #000;
 
   display: flex;
   justify-content: space-between;
@@ -124,7 +125,7 @@
 
 @media (max-width: 320px) {
   .Promos {
-    // flex-wrap: wrap;
+    min-height: 130px;
     padding: 0 15px 0 15px;
 
     &_title {
@@ -141,7 +142,7 @@
   }
 
   .Promos-image {
-    max-width: 130px;
+    max-width: 100px;
   }
 
   .purchaseButton {

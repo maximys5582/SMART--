@@ -12,6 +12,10 @@ import ProductPage from "./pages/ProductPage"
 import Viewed from "./pages/Viewed"
 import Basket from "./pages/Basket"
 import { BasketProvider } from "./BasketContext"
+import AboutUs from "./pages/AboutUs"
+import Stocks from "./pages/Stocks"
+import StocksPage from "./pages/StocksPage"
+import Installment from "./pages/Installment"
 
 const App: React.FC = () => {
   const [isCatalogPhoneVisible, setIsCatalogPhoneVisible] =
@@ -48,6 +52,10 @@ const App: React.FC = () => {
         <Route path={"/product/:id"} element={<ProductPage />} />
         <Route path={"/viewed"} element={<Viewed />} />
         <Route path={"/basket"} element={<Basket />} />
+        <Route path={"/aboutus"} element={<AboutUs />} />
+        <Route path={"/stocks"} element={<Stocks />} />
+        <Route path={"/stocks/:id"} element={<StocksPage />} />
+        <Route path={"/installment"} element={<Installment />} />
       </Routes>
       <Footer />
       <MenuPhone

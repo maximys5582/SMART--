@@ -10,6 +10,10 @@ import appleStore from "./image/news/Rectangle 61.jfif"
 import newsGyro from "./image/news/Rectangle 62.png"
 import basicl from "./image/news/Rectangle 63.png"
 import electroBike from "./image/news/Rectangle 64.png"
+import cake from "./image/image 49.png"
+import BDbigImg from "./image/BDbigImg.png"
+import Installment from "./image/Installment.png"
+import Example from "./image/example.png"
 
 // Объект, хранящий изображения
 const images = {
@@ -1428,6 +1432,20 @@ const images = {
       />
     </svg>
   ),
+  More_svg: (
+    <svg
+      width="48"
+      height="48"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="24" cy="24" r="21" stroke="#0E1821" stroke-width="2" />
+      <circle cx="13" cy="24" r="3" fill="#F15152" />
+      <circle cx="24" cy="24" r="3" fill="#F15152" />
+      <circle cx="35" cy="24" r="3" fill="#F15152" />
+    </svg>
+  ),
   GyroscutersProduct,
   star: (
     <svg
@@ -1636,6 +1654,10 @@ const images = {
       />
     </svg>
   ),
+  cake,
+  BDbigImg,
+  Installment,
+  Example,
 }
 
 // Тип для ключа изображения

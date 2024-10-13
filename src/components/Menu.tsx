@@ -65,9 +65,9 @@ const Menu = () => {
                 {getImageByKey("catalogPhone__svg")}Каталог товаров
               </button>
               <div className="nav_list">
-                <Link to={""}>О компании</Link>
-                <Link to={""}>Акции</Link>
-                <Link to={""}>Рассрочка 0|0|18</Link>
+                <Link to={"/aboutus"}>О компании</Link>
+                <Link to={"/stocks"}>Акции</Link>
+                <Link to={"/installment"}>Рассрочка 0|0|18</Link>
                 <Link to={""}>Сервис и гарантия</Link>
                 <Link to={""}>Опт/дропшиппинг</Link>
                 <Link to={""}>Контакты</Link>

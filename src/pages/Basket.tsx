@@ -24,6 +24,14 @@ const Basket: React.FC = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] =
     useState("Наличными")
   const [isPaymentSelected, setIsPaymentSelected] = useState(false)
+  const [recipient, setRecipient] = useState(false)
+  const [isRecipientSelected, setIsRecipientSelected] = useState(false)
+  const [showNextButton, setShowNextButton] = useState(true)
+
+  const [name, setName] = useState("")
+  const [surname, setSurname] = useState("")
+  const [number, setNumber] = useState("")
+  const [email, setEmail] = useState("")
 
   const increment = (id: number) => {
     const product = basket.find((p) => p.id === id)
@@ -67,10 +75,6 @@ const Basket: React.FC = () => {
 
   const handleAddressSelect = (address: string) => {
     setSelectedAddress(address)
-  }
-
-  const handlePaymentSelected = () => {
-    setIsPaymentSelected(!isPaymentSelected)
   }
 
   return (
@@ -119,7 +123,7 @@ const Basket: React.FC = () => {
                   ))}
                 </div>
                 <button
-                  className="Basket_nextButton"
+                  className="Basket_nextButton Basket_nextButton_toChange"
                   onClick={() => setReceiving(true)}
                 >
                   Изменить
@@ -241,7 +245,6 @@ const Basket: React.FC = () => {
                       {selectedCity.address.map((addr, index) => (
                         <div className="selectedCity" key={index}>
                           <div>
-                            {" "}
                             <input
                               type="radio"
                               id={`pickup-${index}`}
@@ -275,9 +278,6 @@ const Basket: React.FC = () => {
                         center={selectedCity.coords}
                         onaddressSelect={handleAddressSelect}
                       />
-                      {selectedAddress && (
-                        <p>Выбранный адрес: {selectedAddress}</p>
-                      )}
                     </div>
                   </div>
                 )}
@@ -298,9 +298,9 @@ const Basket: React.FC = () => {
                           , {deliveryStreet}, {deliveryApartment}
                         </p>
                       </div>
-                      <div>
+                      <div style={{ width: "100%" }}>
                         <button
-                          className="Basket_nextButton"
+                          className="Basket_nextButton Basket_nextButton_toChange"
                           onClick={() => setPayment(false)}
                         >
                           Изменить
@@ -327,9 +327,9 @@ const Basket: React.FC = () => {
                         </label>
                       </div>
 
-                      <div>
+                      <div style={{ width: "100%" }}>
                         <button
-                          className="Basket_nextButton"
+                          className="Basket_nextButton Basket_nextButton_toChange"
                           onClick={() => setPayment(false)}
                         >
                           Изменить
@@ -365,9 +365,14 @@ const Basket: React.FC = () => {
                     style={{ margin: "30px 0 0 0;", fontSize: "24px" }}
                   >
                     <p style={{ fontWeight: "600" }}>{selectedPaymentMethod}</p>
+
                     <button
-                      className="Basket_nextButton"
-                      onClick={() => setIsPaymentSelected(false)}
+                      className="Basket_nextButton Basket_nextButton_toChange"
+                      onClick={() => {
+                        setIsPaymentSelected(false) // Разрешить изменение способа оплаты
+                        setRecipient(false) // Скрываем получателя при изменении оплаты
+                        setShowNextButton(true) // Показываем кнопку "Далее" снова
+                      }}
                     >
                       Изменить
                     </button>
@@ -377,7 +382,7 @@ const Basket: React.FC = () => {
                     <CustomSelect
                       onTimeSelect={(value) => {
                         setSelectedPaymentMethod(value)
-                        setIsPaymentSelected(true)
+                        setIsPaymentSelected(true) // Способ оплаты выбран
                       }}
                       options={["Картой", "Наличными"]}
                       defaultValue={selectedPaymentMethod}
@@ -386,15 +391,70 @@ const Basket: React.FC = () => {
                 ))}
             </div>
 
-            <button
-              className={isPaymentSelected ? "Basket_nextButton" : "disabled"}
-              onClick={handlePaymentSelected}
-            >
-              Далее
-            </button>
+            {/* Кнопка "Далее" для перехода к получателю, которая скрывается после нажатия */}
+            {showNextButton && (
+              <button
+                className={isPaymentSelected ? "Basket_nextButton" : "disabled"}
+                onClick={() => {
+                  setRecipient(true) // Переход к блоку получателя
+                  setIsRecipientSelected(true) // Отображаем блок с получателем
+                  setShowNextButton(false) // Скрываем кнопку "Далее" после нажатия
+                }}
+              >
+                Далее
+              </button>
+            )}
 
+            {/* Блок с информацией о получателе */}
             <div className="Basket_plug">
-              <h3 className="Basket_plug_title">Получатель</h3>
+              <h3
+                className={
+                  recipient
+                    ? "Basket_plug_title Basket_plug_title_active"
+                    : "Basket_plug_title"
+                }
+              >
+                Получатель
+              </h3>
+              {recipient && (
+                <div className="Basket_plug_flex">
+                  <div>
+                    <p className="delivery_titles">Имя</p>
+                    <input
+                      type="text"
+                      className="recipient_inp"
+                      placeholder="Например, Иван"
+                      onChange={(e) => setName(e.target.value)}
+                    />
+
+                    <p className="delivery_titles">Номер телефона</p>
+                    <input
+                      type="text"
+                      className="recipient_inp"
+                      placeholder="+7 (9__) ___-__-__"
+                      onChange={(e) => setNumber(e.target.value)}
+                    />
+                  </div>
+
+                  <div>
+                    <p className="delivery_titles">Фамилия</p>
+                    <input
+                      type="text"
+                      className="recipient_inp"
+                      placeholder="Например, Иван"
+                      onChange={(e) => setSurname(e.target.value)}
+                    />
+
+                    <p className="delivery_titles">Эл. почта</p>
+                    <input
+                      type="text"
+                      className="recipient_inp"
+                      placeholder="Например,  smart@gmail.com"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -422,7 +482,15 @@ const Basket: React.FC = () => {
                 <span className="title">{grandTotal.toFixed(0)} ₽</span>
               </div>
 
-              <button className="Basket_right_button">Оформить заказ</button>
+              <button
+                className={
+                  name && surname && email && number
+                    ? "Basket_right_button Basket_right_button_active"
+                    : "Basket_right_button"
+                }
+              >
+                Оформить заказ
+              </button>
             </div>
           </div>
         </div>

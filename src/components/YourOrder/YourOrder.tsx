@@ -54,7 +54,7 @@ const YourOrder: React.FC<YourOrderProps> = ({
         </button>
       </div>
 
-      <div className="price">
+      <div className="price YourOrder_price">
         <p className="price-before">{priceBefore} ₽</p>
         <p className="price-after">{priceAfter.toFixed(2)} ₽</p>
       </div>
