@@ -111,3 +111,26 @@
   border-radius: 5px;
   margin-bottom: 15px; /* Отступ между полями формы */
 }
+
+@media (max-width: 425px) {
+  .Installments__making {
+    flex-wrap: wrap;
+
+    &_description {
+      margin: 0;
+    }
+  }
+
+  .Installments__form {
+    width: 50vh;
+    margin: 0 0 0 -10px;
+  }
+
+  .Installments_inp {
+    width: 260px;
+  }
+
+  .Installments__button {
+    width: 260px;
+  }
+}

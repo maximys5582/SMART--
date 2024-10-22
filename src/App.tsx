@@ -16,6 +16,7 @@ import AboutUs from "./pages/AboutUs"
 import Stocks from "./pages/Stocks"
 import StocksPage from "./pages/StocksPage"
 import Installment from "./pages/Installment"
+import ServiceAndWarranty from "./pages/ServiceAndWarranty"
 
 const App: React.FC = () => {
   const [isCatalogPhoneVisible, setIsCatalogPhoneVisible] =
@@ -56,6 +57,7 @@ const App: React.FC = () => {
         <Route path={"/stocks"} element={<Stocks />} />
         <Route path={"/stocks/:id"} element={<StocksPage />} />
         <Route path={"/installment"} element={<Installment />} />
+        <Route path={"/warranty"} element={<ServiceAndWarranty />} />
       </Routes>
       <Footer />
       <MenuPhone

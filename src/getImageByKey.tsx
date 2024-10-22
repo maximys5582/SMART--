@@ -14,6 +14,7 @@ import cake from "./image/image 49.png"
 import BDbigImg from "./image/BDbigImg.png"
 import Installment from "./image/Installment.png"
 import Example from "./image/example.png"
+import ServiceAndWarranty from "./image/ServiceAndWarranty.png"
 
 // Объект, хранящий изображения
 const images = {
@@ -1658,6 +1659,7 @@ const images = {
   BDbigImg,
   Installment,
   Example,
+  ServiceAndWarranty,
 }
 
 // Тип для ключа изображения

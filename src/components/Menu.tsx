@@ -68,7 +68,7 @@ const Menu = () => {
                 <Link to={"/aboutus"}>О компании</Link>
                 <Link to={"/stocks"}>Акции</Link>
                 <Link to={"/installment"}>Рассрочка 0|0|18</Link>
-                <Link to={""}>Сервис и гарантия</Link>
+                <Link to={"/warranty"}>Сервис и гарантия</Link>
                 <Link to={""}>Опт/дропшиппинг</Link>
                 <Link to={""}>Контакты</Link>
               </div>
